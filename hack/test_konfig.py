@@ -46,7 +46,7 @@ def test_konfigs(test_dir):
         kusion_cmd.append("-Y")
         kusion_cmd.append("kcl.yaml")
         kusion_cmd.append("-o")
-        kusion_cmd.append("stdout")
+        kusion_cmd.append(f"{golden_file}/1.yaml")
     else:
         kusion_cmd.append(f"{MAIN_FILE}")
     process = subprocess.run(
@@ -60,6 +60,7 @@ def test_konfigs(test_dir):
     if process.returncode == 0 and len(stderr) == 0:
         try:
             with open(golden_file, "r") as golden:
-                compare_results(stdout.decode(), golden)
+                with open(f"{golden_file}/1.yaml", "r") as res:
+                    compare_results(res, golden)
         except FileNotFoundError:
             raise Exception(f"Error reading expected result from file {golden_file}")
