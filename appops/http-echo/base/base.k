@@ -4,7 +4,7 @@ import base.pkg.kusion_models.kube.templates.resource as res_tpl
 import base.pkg.kusion_models.kube.frontend.service
 import base.pkg.kusion_models.kube.frontend.ingress
 
-# Application Configuration 123
+# Application Configuration 1234
 appConfiguration: frontend.Server {
     # Main Container Configuration
     mainContainer = container.Main {
